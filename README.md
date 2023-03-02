@@ -12,20 +12,14 @@ Use this to talk with ChatGPT from your terminal.
 
 1. Clone and install gems
 
-        ```shell
         git clone git@github.com:jkeam/chatgpt-cli.git
         bundle install
-        ```
 
 2. Create `.env` file like below:
 
-        ```shell
         OPENAI_ACCESS_TOKEN=rh-35xQDkp8RUynsi6C/XvqU4TdZKbDkR0ehVfI8QMjdkfjJJkd
         OPENAI_ORGANIZATION_ID=org-UZZePtGA6ZXXrwPI3hyZjIEz
-        ```
 
 ## Running
 
-```shell
-./run.sh
-```
+        ./run.sh
