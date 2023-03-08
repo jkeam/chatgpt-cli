@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
 require 'dotenv/load'
-require './lib/bot'
-require './lib/io_util'
+require_relative 'lib/bot'
+require_relative 'lib/io_util'
 
 bot = Bot.new(ENV.fetch('OPENAI_ORGANIZATION_ID'), ENV.fetch('OPENAI_ACCESS_TOKEN'))
 IoUtil.print_welcome
