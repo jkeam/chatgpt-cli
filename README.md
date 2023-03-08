@@ -19,7 +19,7 @@ Use this to talk with ChatGPT from your terminal.
 
         bundle install
 
-3. Create `.env` file like below:
+3. Create `.env` file like below, replacing with your values obtained from `Prequisites`:
 
         OPENAI_ACCESS_TOKEN=rh-35xQDkp8RUynsi6C/XvqU4TdZKbDkR0ehVfI8QMjdkfjJJkd
         OPENAI_ORGANIZATION_ID=org-UZZePtGA6ZXXrwPI3hyZjIEz
