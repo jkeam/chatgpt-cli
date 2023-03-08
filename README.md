@@ -24,4 +24,11 @@ Use this to talk with ChatGPT from your terminal.
 
 ```shell
 ./run.sh
+# or make run
+```
+
+## Tests
+
+```shell
+make
 ```
