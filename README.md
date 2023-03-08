@@ -7,6 +7,7 @@ Use this to talk with ChatGPT from your terminal.
 1. [OpenAI API Key](https://platform.openai.com/account/api-keys)
 2. [OpenAI Org ID](https://platform.openai.com/account/org-settings)
 3. Ruby v3+
+4. Bundler v2.3+
 
 ## Setup
 
