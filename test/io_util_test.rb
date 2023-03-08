@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 require 'minitest/autorun'
-require './lib/io_util'
+require_relative '../lib/io_util'
 
 describe 'io util' do
   it 'can print prompt' do
