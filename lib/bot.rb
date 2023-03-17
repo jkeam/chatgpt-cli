@@ -11,7 +11,7 @@ class Bot
   def ask(message, model: 'gpt-3.5-turbo')
     response = @client.chat(
       parameters: {
-        model:,
+        model: model,
         messages: [{ role: 'user', content: message }]
       }
     )
@@ -19,7 +19,7 @@ class Bot
   end
 
   def draw(prompt, size: '256x256')
-    response = @client.images.generate(parameters: { prompt:, size: })
+    response = @client.images.generate(parameters: { prompt: prompt, size: size })
     response.dig('data', 0, 'url')
   end
 end
