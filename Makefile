@@ -1,7 +1,9 @@
-.PHONY: default
-default:
+.DEFAULT_GOAL := test
+
+.PHONY: test
+test:
 	echo "Dir.glob('./test/*_test.rb').each { |file| require file }" | ruby
 
 .PHONY: run
-run: 
+run:
 	ruby ./app.rb
