@@ -34,6 +34,7 @@ make run
 
 2. Install gems
 
+        gem install bundler
         bundle install
 
 3. Create `.env` file like below, replacing with your values obtained from `Prequisites`:
@@ -52,4 +53,5 @@ make run
 
 ```shell
 make
+# or make test
 ```
