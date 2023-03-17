@@ -2,6 +2,22 @@
 
 Use this to talk with ChatGPT from your terminal.
 
+## Usage
+
+```shell
+# run app
+make run
+
+# general chatting
+> hi chatbot
+
+# for usage help
+> /h
+
+# generate an image, like a cat
+> /image cat
+```
+
 ## Prequisites
 
 1. [OpenAI API Key](https://platform.openai.com/account/api-keys)
