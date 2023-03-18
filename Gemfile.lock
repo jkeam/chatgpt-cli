@@ -10,14 +10,17 @@ GEM
     multi_xml (0.6.0)
     ruby-openai (3.5.0)
       httparty (>= 0.18.1)
+    vcr (6.1.0)
 
 PLATFORMS
   arm64-darwin-21
+  x86_64-darwin-21
 
 DEPENDENCIES
   dotenv
   minitest
   ruby-openai
+  vcr
 
 BUNDLED WITH
    2.3.26
