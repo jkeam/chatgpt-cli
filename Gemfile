@@ -2,6 +2,9 @@
 
 source 'https://rubygems.org'
 gem 'dotenv'
-gem 'minitest'
 gem 'ruby-openai'
-gem 'vcr'
+
+group :test, :development do
+  gem 'minitest'
+  gem 'vcr'
+end
