@@ -4,7 +4,7 @@ source 'https://rubygems.org'
 gem 'dotenv'
 gem 'ruby-openai'
 
-group :test, :development do
+group :test, :development, optional: true do
   gem 'minitest'
   gem 'vcr'
 end

@@ -49,9 +49,12 @@ make run
 # or make run
 ```
 
-## Tests
+## Development
 
 ```shell
-make
-# or make test
+# install dev/test dependencies
+bundle config set --local with test development
+
+# run tests
+make test
 ```
