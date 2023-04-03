@@ -7,4 +7,5 @@ gem 'ruby-openai'
 group :test, :development, optional: true do
   gem 'minitest'
   gem 'vcr'
+  gem 'webmock'
 end
