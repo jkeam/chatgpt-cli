@@ -55,6 +55,9 @@ make run
 # install dev/test dependencies
 bundle config set --local with test development
 
+# install test and development dependencies
+bundle install
+
 # run tests
 make test
 ```
