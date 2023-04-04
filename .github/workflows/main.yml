@@ -10,6 +10,7 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+
     name: Ruby ${{ matrix.ruby }}
     strategy:
       matrix:
@@ -22,6 +23,7 @@ jobs:
       uses: ruby/setup-ruby@v1
       with:
         ruby-version: ${{ matrix.ruby }}
-        bundler-cache: true
+    - name: Install dependencies
+      run: bundle config set --local with test development && bundle install --with test development
     - name: Run the default task
       run: bundle exec rake
