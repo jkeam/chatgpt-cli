@@ -1,0 +1,29 @@
+# frozen_string_literal: true
+
+require 'openai'
+
+module Chatgpt
+  module Cli
+    # Bot to communicate with ChatGPT
+    class Bot
+      def initialize(org_id, token)
+        @client = OpenAI::Client.new(access_token: token, organization_id: org_id)
+      end
+
+      def ask(message, model: 'gpt-3.5-turbo')
+        response = @client.chat(
+          parameters: {
+            model:,
+            messages: [{ role: 'user', content: message }]
+          }
+        )
+        response.dig('choices', 0, 'message', 'content')
+      end
+
+      def draw(prompt, size: '256x256')
+        response = @client.images.generate(parameters: { prompt:, size: })
+        response.dig('data', 0, 'url')
+      end
+    end
+  end
+end
