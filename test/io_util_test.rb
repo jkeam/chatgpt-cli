@@ -38,4 +38,8 @@ describe 'io util' do
     refute IoUtil.matches_command?('/notmatch command', %w[test t])
     refute IoUtil.matches_command?('/p command', %w[test t])
   end
+
+  it 'can read input' do
+    IoUtil.read_input
+  end
 end

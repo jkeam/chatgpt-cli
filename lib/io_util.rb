@@ -21,6 +21,10 @@ class IoUtil
     input.sub(/^\/#{keyword}\s+/, '')
   end
 
+  def self.read_input
+    gets&.strip
+  end
+
   def self.matches_command?(input, command)
     input =~ /^[\/\\]#{command}/
   end
