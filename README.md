@@ -12,10 +12,13 @@ make run
 > hi chatbot
 
 # for usage help
-> /h
+> /help
 
 # generate an image, like a cat
 > /image cat
+
+# see history of all your commands typed in this session
+> /history
 ```
 
 ## Prequisites

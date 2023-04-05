@@ -10,15 +10,18 @@ module Chatgpt
     class App
       # rubocop:disable Lint/AssignmentInCondition
       # rubocop:disable Metrics/MethodLength
-      def self.main(bot = nil)
+      def self.main(bot = nil, input = nil)
         bot ||= Bot.new(ENV.fetch('OPENAI_ORGANIZATION_ID'), ENV.fetch('OPENAI_ACCESS_TOKEN'))
         IoUtil.print_welcome
-        while message = IoUtil.read_input
+        while message = IoUtil.read_input(input)
           break if IoUtil.contains_quit_command(message)
 
-          if IoUtil.matches_command?(message, %w[image])
+          case message
+          when %r{^[/\\]image}
             puts bot.draw(IoUtil.get_user_prompt(message, %w[image]))
-          elsif IoUtil.matches_command?(message, %w[help h]) || message == ''
+          when %r{^[/\\]history}
+            IoUtil.print_history
+          when %r{^[/\\]help}, ''
             IoUtil.print_help
           else
             puts bot.ask(message)

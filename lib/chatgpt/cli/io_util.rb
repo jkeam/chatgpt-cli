@@ -20,20 +20,23 @@ module Chatgpt
       end
 
       def self.read_input(input = Readline)
+        input ||= Readline
         input.readline('> ', true)
       end
 
-      def self.matches_command?(input, command)
-        input =~ %r{^[/\\]#{command}}
+      def self.print_history(input = Readline::HISTORY)
+        input ||= Readline::HISTORY
+        puts input.to_a
       end
 
       def self.print_help
-        puts 'Usage Help'
-        puts 'Enter your chat message'
-        puts ''
+        puts '---------------------------------------'
+        puts 'Usage Help: Enter your chat message'
         puts 'Or one of the following slash commands:'
-        puts '/image <image_prompt>'
-        puts '/q to quit'
+        puts '  /image <image_prompt>'
+        puts '  /history'
+        puts '  /q to quit'
+        puts '---------------------------------------'
         true
       end
     end

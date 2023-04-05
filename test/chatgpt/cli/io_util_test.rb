@@ -32,17 +32,17 @@ module Chatgpt
         assert_equal 'command', IoUtil.get_user_prompt('/test    command', 'test')
       end
 
-      it 'can see if match command' do
-        assert IoUtil.matches_command?('/test command', %w[test t])
-        assert IoUtil.matches_command?('/t command', %w[test t])
-        refute IoUtil.matches_command?('/notmatch command', %w[test t])
-        refute IoUtil.matches_command?('/p command', %w[test t])
-      end
-
       it 'can read input' do
         mock = Minitest::Mock.new
         mock.expect(:readline, 'hi', ['> ', true])
         IoUtil.read_input(mock)
+        mock.verify
+      end
+
+      it 'can print history' do
+        mock = Minitest::Mock.new
+        mock.expect(:to_a, ['hi'])
+        IoUtil.print_history(mock)
         mock.verify
       end
     end
