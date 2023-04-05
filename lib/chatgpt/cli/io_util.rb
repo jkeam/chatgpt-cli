@@ -1,15 +1,11 @@
 # frozen_string_literal: true
 
+require 'readline'
+
 module Chatgpt
   module Cli
     # IO Utility
     class IoUtil
-      def self.prompt
-        print '> '
-        $stdout.flush
-        true
-      end
-
       def self.contains_quit_command(input)
         %w[exit quit /exit /quit /q \\q \\quit \\exit].include?(input)
       end
@@ -23,8 +19,8 @@ module Chatgpt
         input.sub(%r{^/#{keyword}\s+}, '')
       end
 
-      def self.read_input(input = $stdin)
-        input.gets&.strip
+      def self.read_input(input = Readline)
+        input.readline('> ', true)
       end
 
       def self.matches_command?(input, command)

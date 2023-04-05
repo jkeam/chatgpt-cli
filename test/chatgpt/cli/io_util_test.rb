@@ -8,10 +8,6 @@ module Chatgpt
   module Cli
     # rubocop:disable Metrics/BlockLength
     describe 'io util' do
-      it 'can print prompt' do
-        assert IoUtil.prompt
-      end
-
       it 'can print welcome' do
         assert IoUtil.print_welcome
       end
@@ -44,8 +40,10 @@ module Chatgpt
       end
 
       it 'can read input' do
-        input = StringIO.new('test')
-        IoUtil.read_input(input)
+        mock = Minitest::Mock.new
+        mock.expect(:readline, 'hi', ['> ', true])
+        IoUtil.read_input(mock)
+        mock.verify
       end
     end
     # rubocop:enable Metrics/BlockLength
