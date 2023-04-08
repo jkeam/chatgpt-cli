@@ -10,6 +10,8 @@ module Chatgpt
     class App
       # rubocop:disable Lint/AssignmentInCondition
       # rubocop:disable Metrics/MethodLength
+      # rubocop:disable Metrics/CyclomaticComplexity
+      # rubocop:disable Metrics/AbcSize
       def self.main(bot = nil, input = nil)
         bot ||= Bot.new(ENV.fetch('OPENAI_ORGANIZATION_ID'), ENV.fetch('OPENAI_ACCESS_TOKEN'))
         IoUtil.print_welcome
@@ -20,7 +22,10 @@ module Chatgpt
           when %r{^[/\\]image}
             puts bot.draw(IoUtil.get_user_prompt(message, %w[image]))
           when %r{^[/\\]history}
-            IoUtil.print_history
+            puts bot.history
+          when %r{^[/\\]reset}
+            bot.reset
+            puts 'Context reset'
           when %r{^[/\\]help}, ''
             IoUtil.print_help
           else
@@ -28,8 +33,10 @@ module Chatgpt
           end
         end
       end
-      # rubocop:enable Lint/AssignmentInCondition
+      # rubocop:enable Metrics/AbcSize
+      # rubocop:enable Metrics/CyclomaticComplexity
       # rubocop:enable Metrics/MethodLength
+      # rubocop:enable Lint/AssignmentInCondition
     end
   end
 end

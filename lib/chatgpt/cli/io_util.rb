@@ -24,15 +24,11 @@ module Chatgpt
         input.readline('> ', true)
       end
 
-      def self.print_history(input = Readline::HISTORY)
-        input ||= Readline::HISTORY
-        puts input.to_a
-      end
-
       def self.print_help
         puts '---------------------------------------'
         puts 'Usage Help: Enter your chat message'
         puts 'Or one of the following slash commands:'
+        puts '  /reset'
         puts '  /image <image_prompt>'
         puts '  /history'
         puts '  /q to quit'

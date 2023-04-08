@@ -38,13 +38,6 @@ module Chatgpt
         IoUtil.read_input(mock)
         mock.verify
       end
-
-      it 'can print history' do
-        mock = Minitest::Mock.new
-        mock.expect(:to_a, ['hi'])
-        IoUtil.print_history(mock)
-        mock.verify
-      end
     end
     # rubocop:enable Metrics/BlockLength
   end
