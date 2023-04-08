@@ -17,8 +17,12 @@ make run
 # generate an image, like a cat
 > /image cat
 
-# see history of all your commands typed in this session
+# see history of conversation so far
 > /history
+
+# by default, every message is part of the same context/conversation
+# this resets your context/conversation
+> /reset
 ```
 
 ## Prequisites
