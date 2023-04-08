@@ -7,10 +7,14 @@ module Chatgpt
   module Cli
     describe 'app' do
       it 'can run' do
-        mock = Minitest::Mock.new
-        mock.expect(:readline, '\quit', ['> ', true])
-        App.main(nil, mock)
-        mock.verify
+        input = Minitest::Mock.new
+        input.expect(:readline, '\quit', ['> ', true])
+
+        bot = Minitest::Mock.new
+
+        App.main(bot, input)
+        input.verify
+        bot.verify
       end
     end
   end
