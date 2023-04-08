@@ -3,6 +3,7 @@
 source 'https://rubygems.org'
 gem 'dotenv'
 gem 'ruby-openai'
+gem 'tty-spinner'
 
 group :test, :development, optional: true do
   gem 'minitest'

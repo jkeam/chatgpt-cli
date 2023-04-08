@@ -1,8 +1,10 @@
 # frozen_string_literal: true
 
 require 'dotenv/load'
+require 'tty-spinner'
 require_relative 'bot'
 require_relative 'io_util'
+require_relative 'spinner'
 
 module Chatgpt
   module Cli
@@ -14,13 +16,17 @@ module Chatgpt
       # rubocop:disable Metrics/AbcSize
       def self.main(bot = nil, input = nil)
         bot ||= Bot.new(ENV.fetch('OPENAI_ORGANIZATION_ID'), ENV.fetch('OPENAI_ACCESS_TOKEN'))
+        spinner = Spinner.new
         IoUtil.print_welcome
         while message = IoUtil.read_input(input)
           break if IoUtil.contains_quit_command(message)
 
           case message
           when %r{^[/\\]image}
-            puts bot.draw(IoUtil.get_user_prompt(message, %w[image]))
+            spinner.start
+            resp = bot.draw(IoUtil.get_user_prompt(message, %w[image]))
+            spinner.success
+            puts resp
           when %r{^[/\\]history}
             puts bot.history
           when %r{^[/\\]reset}
@@ -29,7 +35,10 @@ module Chatgpt
           when %r{^[/\\]help}, ''
             IoUtil.print_help
           else
-            puts bot.ask(message)
+            spinner.start
+            resp = bot.ask(message)
+            spinner.success
+            puts resp
           end
         end
       end
