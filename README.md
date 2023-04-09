@@ -35,7 +35,10 @@ make run
 ## Running Using Container
 
 ```shell
-podman run --rm -e OPENAI_ACCESS_TOKEN=rh-35xQDkp8RUynsi6C/XvqU4TdZKbDkR0ehVfI8QMjdkfjJJkd -e OPENAI_ORGANIZATION_ID=org-UZZePtGA6ZXXrwPI3hyZjIEz -it quay.io/jkeam/chatgpt-cli ./run.sh
+podman run --rm -e OPENAI_ACCESS_TOKEN=rh-35xQDkp8RUynsi6C/XvqU4TdZKbDkR0ehVfI8QMjdkfjJJkd -e OPENAI_ORGANIZATION_ID=org-UZZePtGA6ZXXrwPI3hyZjIEz -it quay.io/jkeam/chatgpt-cli:latest ./run.sh
+
+# or use this image if you are on an m1 mac
+# podman run --rm -e OPENAI_ACCESS_TOKEN=rh-35xQDkp8RUynsi6C/XvqU4TdZKbDkR0ehVfI8QMjdkfjJJkd -e OPENAI_ORGANIZATION_ID=org-UZZePtGA6ZXXrwPI3hyZjIEz -it quay.io/jkeam/chatgpt-cli:m1-latest ./run.sh
 ```
 
 ## Running from Source
