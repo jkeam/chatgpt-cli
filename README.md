@@ -32,7 +32,15 @@ make run
 3. Ruby v3+
 4. Bundler v2.3+
 
-## Setup
+## Running Using Container
+
+```shell
+podman run --rm -e OPENAI_ACCESS_TOKEN=rh-35xQDkp8RUynsi6C/XvqU4TdZKbDkR0ehVfI8QMjdkfjJJkd -e OPENAI_ORGANIZATION_ID=org-UZZePtGA6ZXXrwPI3hyZjIEz -it quay.io/jkeam/chatgpt-cli ./run.sh
+```
+
+## Running from Source
+
+### Setup
 
 1. Clone project
 
@@ -49,14 +57,14 @@ make run
         OPENAI_ACCESS_TOKEN=rh-35xQDkp8RUynsi6C/XvqU4TdZKbDkR0ehVfI8QMjdkfjJJkd
         OPENAI_ORGANIZATION_ID=org-UZZePtGA6ZXXrwPI3hyZjIEz
 
-## Running
+### Running
 
 ```shell
 ./run.sh
 # or make run
 ```
 
-## Development
+### Development
 
 ```shell
 # install dev/test dependencies

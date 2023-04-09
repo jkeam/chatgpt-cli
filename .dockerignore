@@ -1,0 +1,12 @@
+.bundle
+.git
+.github
+ignore
+test
+.env
+.gitignore
+.rubocopy.yml
+Dockerfile
+Makefile
+Rakefile
+README.md
