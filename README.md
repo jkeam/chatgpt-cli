@@ -25,6 +25,12 @@ make run
 > /reset
 ```
 
+### Context
+
+Context is maintained for all chat inputs only.
+Slash commands are not captured.
+Use `/reset` to clear your context.
+
 ## Prequisites
 
 1. [OpenAI API Key](https://platform.openai.com/account/api-keys)
