@@ -23,6 +23,13 @@ module Chatgpt
       def error
         @spinner.error
       end
+
+      def execute(&func)
+        start
+        resp = func.call
+        success
+        resp
+      end
     end
   end
 end

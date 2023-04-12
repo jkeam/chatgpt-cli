@@ -23,10 +23,7 @@ module Chatgpt
 
           case message
           when %r{^[/\\]image}
-            spinner.start
-            resp = bot.draw(IoUtil.get_user_prompt(message, %w[image]))
-            spinner.success
-            puts resp
+            puts(spinner.execute { bot.draw(IoUtil.get_user_prompt(message, %w[image])) })
           when %r{^[/\\]history}
             puts bot.history
           when %r{^[/\\]reset}
@@ -35,10 +32,7 @@ module Chatgpt
           when %r{^[/\\]help}, ''
             IoUtil.print_help
           else
-            spinner.start
-            resp = bot.ask(message)
-            spinner.success
-            puts resp
+            puts(spinner.execute { bot.ask(message) })
           end
         end
       end
