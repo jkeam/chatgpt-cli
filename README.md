@@ -14,7 +14,7 @@ make run
 # for usage help
 > /help
 
-# generate an image, like a cat
+# generate an image, like a cat. uses the DALL·E model
 > /image cat
 
 # see history of conversation so far
