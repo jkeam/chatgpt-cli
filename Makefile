@@ -6,4 +6,4 @@ test:
 
 .PHONY: run
 run:
-	ruby ./app.rb
+	bundle exec ruby ./app.rb

@@ -14,15 +14,12 @@ module Chatgpt
 
       def ask(message, model: 'gpt-3.5-turbo')
         @context.add_user_message(message)
-        response = @client.chat(
-          parameters: {
-            model:,
-            messages: @context.context
-          }
-        )
-        resp = response.dig('choices', 0, 'message', 'content')
-        @context.add_bot_message(resp)
-        resp
+        response = @client.chat(parameters: { model:, messages: @context.context })
+
+        resp = response.dig('error', 'message')
+        return resp unless resp.nil?
+
+        handle_unknown_ask_error(response)
       end
 
       def reset(system_message = nil)
@@ -36,6 +33,19 @@ module Chatgpt
 
       def history
         @context.context
+      end
+
+      private
+
+      def handle_unknown_ask_error(response)
+        resp = response.dig('choices', 0, 'message', 'content')
+        if resp.nil?
+          resp = 'An unknown error occurred.'
+          puts response
+        else
+          @context.add_bot_message(resp)
+        end
+        resp
       end
     end
   end

@@ -43,6 +43,26 @@ module Chatgpt
         bot.history
         mock.verify
       end
+
+      it 'can handle errors' do
+        VCR.use_cassette('known-error') do
+          bot = Bot.new 'org-test', 'sk-token'
+          response = bot.ask 'hi'
+
+          refute_nil response
+          assert_equal('You exceeded your current quota, please check your plan and billing details.', response)
+        end
+      end
+
+      it 'can handle unknown errors' do
+        VCR.use_cassette('unknown-error') do
+          bot = Bot.new 'org-test', 'sk-token'
+          response = bot.ask 'hi'
+
+          refute_nil response
+          assert_equal('An unknown error occurred.', response)
+        end
+      end
       # rubocop:enable Metrics/BlockLength
     end
   end
