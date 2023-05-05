@@ -15,7 +15,7 @@ module Chatgpt
       # rubocop:disable Metrics/CyclomaticComplexity
       # rubocop:disable Metrics/AbcSize
       def self.main(bot = nil, input = nil)
-        bot ||= Bot.new(ENV.fetch('OPENAI_ORGANIZATION_ID'), ENV.fetch('OPENAI_ACCESS_TOKEN'))
+        bot ||= Bot.new(ENV.fetch('OPENAI_ORGANIZATION_ID', nil), ENV.fetch('OPENAI_ACCESS_TOKEN'))
         spinner = Spinner.new
         IoUtil.print_welcome
         while message = IoUtil.read_input(input)

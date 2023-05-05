@@ -8,7 +8,11 @@ module Chatgpt
     # Bot to communicate with ChatGPT
     class Bot
       def initialize(org_id, token, context = nil)
-        @client = OpenAI::Client.new(access_token: token, organization_id: org_id)
+        OpenAI.configure do |config|
+          config.access_token = token
+          config.organization_id = org_id unless org_id.nil?
+        end
+        @client = OpenAI::Client.new
         @context = context || Context.new
       end
 
