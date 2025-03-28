@@ -53,18 +53,25 @@ podman run --rm -e OPENAI_ACCESS_TOKEN=rh-35xQDkp8RUynsi6C/XvqU4TdZKbDkR0ehVfI8Q
 
 1. Clone project
 
-        git clone git@github.com:jkeam/chatgpt-cli.git
-        cd chatgpt-cli
+    ```shell
+    git clone git@github.com:jkeam/chatgpt-cli.git
+    cd chatgpt-cli
+    ```
 
 2. Install gems
 
-        gem install bundler
-        bundle install
+    ```shell
+    gem install bundler
+    bundle install
+    ```
 
 3. Create `.env` file like below, replacing with your values obtained from `Prequisites`:
 
-        OPENAI_ACCESS_TOKEN=rh-35xQDkp8RUynsi6C/XvqU4TdZKbDkR0ehVfI8QMjdkfjJJkd
-        OPENAI_ORGANIZATION_ID=org-UZZePtGA6ZXXrwPI3hyZjIEz
+    ```shell
+    OPENAI_ACCESS_TOKEN=rh-35xQDkp8RUynsi6C/qU4TdZKbDkR0thisisobviouslyfake
+    OPENAI_ORGANIZATION_ID=org-UZZePthisisobviouslyfake
+    MODEL_NAME=openai-4o
+    ```
 
 ### Running
 
@@ -85,3 +92,7 @@ bundle install
 # run tests
 make test
 ```
+
+## References
+
+1. [OpenSSL with Ruby version compat](https://github.com/rbenv/ruby-build/blob/10eb379aecc2fc35874405247060e8a536959fe1/share/ruby-build/3.3.5)

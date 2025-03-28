@@ -16,6 +16,7 @@ module Chatgpt
       # rubocop:disable Metrics/AbcSize
       def self.main(bot = nil, input = nil)
         bot ||= Bot.new(ENV.fetch('OPENAI_ORGANIZATION_ID', nil), ENV.fetch('OPENAI_ACCESS_TOKEN'))
+        model_name ||= ENV.fetch('MODEL_NAME', 'gpt-4o')
         spinner = Spinner.new
         IoUtil.print_welcome
         while message = IoUtil.read_input(input)
@@ -32,7 +33,7 @@ module Chatgpt
           when %r{^[/\\]help}, ''
             IoUtil.print_help
           else
-            puts(spinner.execute { bot.ask(message) })
+            puts(spinner.execute { bot.ask(message, model: model_name) })
           end
         end
       end
