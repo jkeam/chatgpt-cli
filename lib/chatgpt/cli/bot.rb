@@ -17,16 +17,23 @@ module Chatgpt
         @context = context || Context.new
       end
 
+      # rubocop:disable Metrics/MethodLength
       def ask(message, model: 'gpt-3.5-turbo')
-        @context.add_user_message(message)
-        @client.chat(parameters: { model:, messages: @context.context })
-      rescue Faraday::TooManyRequestsError
-        @context.add_bot_message('You exceeded your current quota, please check your plan and billing details.')
-      rescue Faraday::UnauthorizedError
-        @context.add_bot_message('Your token is unauthorized.')
-      rescue Faraday::Error
-        @context.add_bot_message('Unknown error occurred.')
+        begin
+          @context.add_user_message(message)
+          response = @client.chat(parameters: { model:, messages: @context.context })
+          bot_resp = response.dig('choices', 0, 'message', 'content')
+        rescue Faraday::TooManyRequestsError
+          bot_resp = 'You exceeded your current quota, please check your plan and billing details.'
+        rescue Faraday::UnauthorizedError
+          bot_resp = 'Your token is unauthorized.'
+        rescue Faraday::Error
+          bot_resp = 'Unknown error occurred.'
+        end
+        @context.add_bot_message(bot_resp)
+        bot_resp
       end
+      # rubocop:enable Metrics/MethodLength
 
       def reset(system_message = nil)
         @context.reset(system_message)
