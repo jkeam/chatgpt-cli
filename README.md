@@ -71,6 +71,8 @@ podman run --rm -e OPENAI_ACCESS_TOKEN=rh-35xQDkp8RUynsi6C/XvqU4TdZKbDkR0ehVfI8Q
     OPENAI_ACCESS_TOKEN=rh-35xQDkp8RUynsi6C/qU4TdZKbDkR0thisisobviouslyfake
     OPENAI_ORGANIZATION_ID=org-UZZePthisisobviouslyfake
     MODEL_NAME=openai-4o
+    # optionally
+    URI_BASE=https://oai.hconeai.com/
     ```
 
 ### Running

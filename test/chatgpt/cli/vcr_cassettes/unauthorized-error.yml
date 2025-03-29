@@ -21,8 +21,8 @@ http_interactions:
       - Ruby
   response:
     status:
-      code: 500
-      message: Error
+      code: 401
+      message: Unauthorized
     headers:
       Date:
       - Sat, 29 Mar 2025 04:38:32 GMT
@@ -53,10 +53,10 @@ http_interactions:
       string: |
         {
             "error": {
-                "message": "Unknown",
-                "type": "unknown_error",
+                "message": "Incorrect API key provided: sk-token. You can find your API key at https://platform.openai.com/account/api-keys.",
+                "type": "invalid_request_error",
                 "param": null,
-                "code": "unknown_error"
+                "code": "invalid_api_key"
             }
         }
   recorded_at: Sat, 29 Mar 2025 04:38:32 GMT

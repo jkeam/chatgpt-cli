@@ -12,6 +12,7 @@ group :test, :development, optional: true do
   gem 'rubocop'
   gem 'rubocop-minitest'
   gem 'rubocop-rake'
+  gem 'solargraph'
   gem 'vcr'
   gem 'webmock'
 end

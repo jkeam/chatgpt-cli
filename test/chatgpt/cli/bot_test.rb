@@ -30,7 +30,7 @@ module Chatgpt
         mock = Minitest::Mock.new
         mock.expect(:reset, nil, [nil])
 
-        bot = Bot.new 'org-test', 'sk-token', mock
+        bot = Bot.new 'org-test', 'sk-token', context: mock
         bot.reset
         mock.verify
       end
@@ -39,18 +39,34 @@ module Chatgpt
         mock = Minitest::Mock.new
         mock.expect(:context, [])
 
-        bot = Bot.new 'org-test', 'sk-token', mock
+        bot = Bot.new 'org-test', 'sk-token', context: mock
         bot.history
         mock.verify
       end
 
-      it 'can handle errors' do
-        VCR.use_cassette('known-error') do
+      it 'can handle too many request errors' do
+        VCR.use_cassette('too-many-request-error') do
           bot = Bot.new 'org-test', 'sk-token'
           response = bot.ask 'hi'
 
           refute_nil response
-          assert_equal('You exceeded your current quota, please check your plan and billing details.', response)
+          assert_equal(
+            'You exceeded your current quota, please check your plan and billing details.',
+            response.context.pop[:content]
+          )
+        end
+      end
+
+      it 'can handle unauthorized errors' do
+        VCR.use_cassette('unauthorized-error') do
+          bot = Bot.new 'org-test', 'sk-token'
+          response = bot.ask 'hi'
+
+          refute_nil response
+          assert_equal(
+            'Your token is unauthorized.',
+            response.context.pop[:content]
+          )
         end
       end
 
@@ -60,7 +76,10 @@ module Chatgpt
           response = bot.ask 'hi'
 
           refute_nil response
-          assert_equal('An unknown error occurred.', response)
+          assert_equal(
+            'Unknown error occurred.',
+            response.context.pop[:content]
+          )
         end
       end
       # rubocop:enable Metrics/BlockLength
