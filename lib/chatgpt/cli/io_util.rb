@@ -25,7 +25,7 @@ module Chatgpt
       end
 
       def self.print_help
-        puts '---------------------------------------'
+        puts '---------------------------------------------------'
         puts 'Usage Help: Enter your chat message'
         puts 'Or one of the following slash commands:'
         puts '  /h or /help for this help'
@@ -33,7 +33,7 @@ module Chatgpt
         puts '  /image <image_prompt> but only works with OpenAI'
         puts '  /history'
         puts '  /q or quit to quit'
-        puts '---------------------------------------'
+        puts '---------------------------------------------------'
         true
       end
     end
