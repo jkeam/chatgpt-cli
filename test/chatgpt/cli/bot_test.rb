@@ -26,6 +26,19 @@ module Chatgpt
         end
       end
 
+      it 'can handle draw failure' do
+        VCR.use_cassette('draw_failure') do
+          bot = Bot.new 'org-test', 'sk-token'
+          response = bot.draw 'cat'
+
+          refute_nil response
+          assert_equal(
+            "Error while trying to generate an image, are you sure your LLM service supports this?\n",
+            response
+          )
+        end
+      end
+
       it 'can reset context' do
         mock = Minitest::Mock.new
         mock.expect(:reset, nil, [nil])

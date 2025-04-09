@@ -1,0 +1,39 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.openai.com/v1/images/generations
+    body:
+      encoding: UTF-8
+      string: '{"prompt":"cat","size":"1024x1024","model":"dall-e-3","quality":"standard"}'
+    headers:
+      Content-Type:
+      - application/json
+      Authorization:
+      - Bearer sk-token
+      Openai-Organization:
+      - org-test
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 404
+      message: Not Found
+    headers:
+      Server:
+      - openresty
+      Date:
+      - Wed, 09 Apr 2025 04:59:45 GMT
+      Content-Type:
+      - text/plain; charset=us-ascii
+      Transfer-Encoding:
+      - chunked
+    body:
+      encoding: UTF-8
+      string: No Mapping Rule matched
+  recorded_at: Wed, 09 Apr 2025 04:59:45 GMT
+recorded_with: VCR 6.3.1

@@ -30,6 +30,7 @@ module Chatgpt
               stream: proc do |chunk, _bytesize|
                 msg = chunk.dig('choices', 0, 'delta', 'content')
                 @context.append_bot_message(msg)
+                print(msg)
               end
             }
           )
@@ -54,14 +55,16 @@ module Chatgpt
       # Model can be dall-e-2 or dall-e-3
       # Quality can be 'standard' or 'hd' for dall-e-3 only
       def draw(prompt, size: '1024x1024', model: 'dall-e-3', quality: 'standard')
-        parameters = {
-          prompt:,
-          size:,
-          model:
-        }
+        parameters = { prompt:, size:, model: }
         parameters[:quality] = quality if model == 'dall-e-3'
-        response = @client.images.generate(parameters:)
-        response.dig('data', 0, 'url')
+        bot_resp = ''
+        begin
+          response = @client.images.generate(parameters:)
+          bot_resp = response.dig('data', 0, 'url')
+        rescue Faraday::ResourceNotFound
+          bot_resp = 'Error while trying to generate an image, are you sure your LLM service supports this?'
+        end
+        "#{bot_resp}\n"
       end
 
       def history
