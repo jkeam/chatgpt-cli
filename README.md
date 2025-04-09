@@ -69,9 +69,9 @@ podman run --rm -e ACCESS_TOKEN=rh-35xQDkp8RUynsi6C/qU4TdZKbDkR0thisisobviouslyf
 
     ```shell
     ACCESS_TOKEN=rh-35xQDkp8RUynsi6C/qU4TdZKbDkR0thisisobviouslyfake
-    ORG_ID=org-UZZePthisisobviouslyfake
     MODEL_NAME=openai-4o
     # optionally
+    ORG_ID=org-UZZePthisisobviouslyfake
     URI_BASE=https://oai.hconeai.com/
     ```
 
