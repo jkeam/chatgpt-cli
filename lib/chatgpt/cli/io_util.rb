@@ -30,7 +30,7 @@ module Chatgpt
         puts 'Or one of the following slash commands:'
         puts '  /h or /help for this help'
         puts '  /reset to reset this context'
-        puts '  /image <image_prompt>'
+        puts '  /image <image_prompt> but only works with OpenAI'
         puts '  /history'
         puts '  /q or quit to quit'
         puts '---------------------------------------'

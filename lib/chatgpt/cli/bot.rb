@@ -48,8 +48,19 @@ module Chatgpt
         @context.reset(system_message)
       end
 
-      def draw(prompt, size: '256x256')
-        response = @client.images.generate(parameters: { prompt:, size: })
+      # Size can be
+      #   dall-e-2: 256x256, 512x512 or 1024x1024
+      #   dall-e-3: 1024x1024, 1024x1792 or 1792x1024
+      # Model can be dall-e-2 or dall-e-3
+      # Quality can be 'standard' or 'hd' for dall-e-3 only
+      def draw(prompt, size: '1024x1024', model: 'dall-e-3', quality: 'standard')
+        parameters = {
+          prompt:,
+          size:,
+          model:
+        }
+        parameters[:quality] = quality if model == 'dall-e-3'
+        response = @client.images.generate(parameters:)
         response.dig('data', 0, 'url')
       end
 
