@@ -41,10 +41,10 @@ Use `/reset` to clear your context.
 ## Running Using Container
 
 ```shell
-podman run --rm -e OPENAI_ACCESS_TOKEN=rh-35xQDkp8RUynsi6C/XvqU4TdZKbDkR0ehVfI8QMjdkfjJJkd -e OPENAI_ORGANIZATION_ID=org-UZZePtGA6ZXXrwPI3hyZjIEz -it quay.io/jkeam/chatgpt-cli:latest ./run.sh
+podman run --rm -e ACCESS_TOKEN=rh-35xQDkp8RUynsi6C/qU4TdZKbDkR0thisisobviouslyfake -e ORG_ID=org-UZZePthisisobviouslyfake -it quay.io/jkeam/chatgpt-cli:latest ./run.sh
 
 # or use this image if you are on an m1 mac
-# podman run --rm -e OPENAI_ACCESS_TOKEN=rh-35xQDkp8RUynsi6C/XvqU4TdZKbDkR0ehVfI8QMjdkfjJJkd -e OPENAI_ORGANIZATION_ID=org-UZZePtGA6ZXXrwPI3hyZjIEz -it quay.io/jkeam/chatgpt-cli:m1-latest ./run.sh
+# podman run --rm -e ACCESS_TOKEN=rh-35xQDkp8RUynsi6C/qU4TdZKbDkR0thisisobviouslyfake -e ORG_ID=org-UZZePthisisobviouslyfake -it quay.io/jkeam/chatgpt-cli:m1-latest ./run.sh
 ```
 
 ## Running from Source
@@ -68,8 +68,8 @@ podman run --rm -e OPENAI_ACCESS_TOKEN=rh-35xQDkp8RUynsi6C/XvqU4TdZKbDkR0ehVfI8Q
 3. Create `.env` file like below, replacing with your values obtained from `Prequisites`:
 
     ```shell
-    OPENAI_ACCESS_TOKEN=rh-35xQDkp8RUynsi6C/qU4TdZKbDkR0thisisobviouslyfake
-    OPENAI_ORGANIZATION_ID=org-UZZePthisisobviouslyfake
+    ACCESS_TOKEN=rh-35xQDkp8RUynsi6C/qU4TdZKbDkR0thisisobviouslyfake
+    ORG_ID=org-UZZePthisisobviouslyfake
     MODEL_NAME=openai-4o
     # optionally
     URI_BASE=https://oai.hconeai.com/
