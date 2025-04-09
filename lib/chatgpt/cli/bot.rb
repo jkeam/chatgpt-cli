@@ -19,10 +19,20 @@ module Chatgpt
 
       # rubocop:disable Metrics/MethodLength
       def ask(message, model: 'gpt-3.5-turbo')
+        bot_resp = ''
         begin
           @context.add_user_message(message)
-          response = @client.chat(parameters: { model:, messages: @context.context })
-          bot_resp = response.dig('choices', 0, 'message', 'content')
+          @context.add_bot_message('')
+          @client.chat(
+            parameters: {
+              model:,
+              messages: @context.context,
+              stream: proc do |chunk, _bytesize|
+                msg = chunk.dig('choices', 0, 'delta', 'content')
+                @context.append_bot_message(msg)
+              end
+            }
+          )
         rescue Faraday::TooManyRequestsError
           bot_resp = 'You exceeded your current quota, please check your plan and billing details.'
         rescue Faraday::UnauthorizedError
@@ -30,8 +40,7 @@ module Chatgpt
         rescue Faraday::Error
           bot_resp = 'Unknown error occurred.'
         end
-        @context.add_bot_message(bot_resp)
-        bot_resp
+        "#{bot_resp}\n"
       end
       # rubocop:enable Metrics/MethodLength
 

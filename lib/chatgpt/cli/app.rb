@@ -32,10 +32,10 @@ module Chatgpt
           when %r{^[/\\]reset}
             bot.reset
             puts 'Context reset'
-          when %r{^[/\\]help}, ''
+          when %r{^[/\\]help}, %r{^[/\\]h}, ''
             IoUtil.print_help
           else
-            puts(spinner.execute { bot.ask(message, model: model_name) })
+            puts(bot.ask(message, model: model_name))
           end
         end
       end

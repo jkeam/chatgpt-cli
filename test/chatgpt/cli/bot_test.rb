@@ -51,7 +51,7 @@ module Chatgpt
 
           refute_nil response
           assert_equal(
-            'You exceeded your current quota, please check your plan and billing details.',
+            "You exceeded your current quota, please check your plan and billing details.\n",
             response
           )
         end
@@ -64,7 +64,7 @@ module Chatgpt
 
           refute_nil response
           assert_equal(
-            'Your token is unauthorized.',
+            "Your token is unauthorized.\n",
             response
           )
         end
@@ -77,7 +77,7 @@ module Chatgpt
 
           refute_nil response
           assert_equal(
-            'Unknown error occurred.',
+            "Unknown error occurred.\n",
             response
           )
         end

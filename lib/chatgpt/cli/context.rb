@@ -30,6 +30,12 @@ module Chatgpt
         @context.push({ role: 'assistant', content: message })
         self
       end
+
+      def append_bot_message(message)
+        # thread unsafe code, following needs to be atomic
+        @context[-1][:content] = "#{@context[-1][:content]}#{message}"
+        self
+      end
     end
   end
 end

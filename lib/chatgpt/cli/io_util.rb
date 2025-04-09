@@ -28,10 +28,11 @@ module Chatgpt
         puts '---------------------------------------'
         puts 'Usage Help: Enter your chat message'
         puts 'Or one of the following slash commands:'
-        puts '  /reset'
+        puts '  /h or /help for this help'
+        puts '  /reset to reset this context'
         puts '  /image <image_prompt>'
         puts '  /history'
-        puts '  /q to quit'
+        puts '  /q or quit to quit'
         puts '---------------------------------------'
         true
       end

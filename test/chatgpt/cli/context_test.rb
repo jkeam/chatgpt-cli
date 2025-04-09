@@ -6,6 +6,7 @@ require_relative '../../../lib/chatgpt/cli/context'
 
 module Chatgpt
   module Cli
+    # rubocop:disable Metrics/BlockLength
     describe 'context' do
       it 'can reset' do
         context = Context.new
@@ -45,6 +46,18 @@ module Chatgpt
 
         assert_equal([{ role: 'assistant', content: 'hi!' }], context.context)
       end
+
+      it 'can append bot message' do
+        context = Context.new
+
+        assert_empty(context.context)
+
+        context.add_bot_message('hello')
+        context.append_bot_message(' world!')
+
+        assert_equal([{ role: 'assistant', content: 'hello world!' }], context.context)
+      end
     end
+    # rubocop:enable Metrics/BlockLength
   end
 end
