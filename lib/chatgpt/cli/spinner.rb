@@ -7,8 +7,14 @@ module Chatgpt
     # Spinner class
     class Spinner
       def initialize(spinner = nil)
-        @spinner = spinner || TTY::Spinner.new(':spinner',
-                                               format: :dots, clear: true, success_mark: '-->', error_mark: 'x')
+        @spinner = spinner || TTY::Spinner.new(":spinner",
+                                               format: :dots,
+                                               clear: true,
+                                               success_mark: '-->',
+                                               error_mark: 'x',
+                                               hide_cursor: true,
+                                               output: $stdout,
+                                               interval: 20)
       end
 
       def start
