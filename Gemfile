@@ -4,6 +4,7 @@ source 'https://rubygems.org'
 gem 'dotenv'
 gem 'ruby-openai'
 gem 'tty-spinner'
+gem 'reline'
 
 group :test, :development, optional: true do
   gem 'minitest'
