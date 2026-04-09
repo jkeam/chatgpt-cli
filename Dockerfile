@@ -1,4 +1,4 @@
-FROM registry.access.redhat.com/ubi9/ruby-33:9.5-1743514808
+FROM registry.access.redhat.com/ubi9/ruby-33:9.7
 
 USER root
 
