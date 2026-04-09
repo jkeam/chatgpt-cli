@@ -20,8 +20,10 @@ module Chatgpt
       end
 
       def self.read_input(input = Readline)
-        input ||= Readline
-        input.readline('> ', true)
+          input ||= Readline
+          input.readline('> ', true)
+        rescue Interrupt, StandardError => e
+          return 'exit'
       end
 
       def self.print_help
