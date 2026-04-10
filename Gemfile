@@ -7,7 +7,8 @@ gem 'ruby-openai'
 gem 'tty-spinner'
 
 group :test, :development, optional: true do
-  gem 'minitest', '~> 5.0'
+  gem 'minitest', '~> 6.0'
+  gem 'minitest-mock'
   gem 'rake'
   gem 'ruboclean'
   gem 'rubocop'
