@@ -2,12 +2,12 @@
 
 source 'https://rubygems.org'
 gem 'dotenv'
+gem 'reline'
 gem 'ruby-openai'
 gem 'tty-spinner'
-gem 'reline'
 
 group :test, :development, optional: true do
-  gem 'minitest'
+  gem 'minitest', '~> 5.0'
   gem 'rake'
   gem 'ruboclean'
   gem 'rubocop'

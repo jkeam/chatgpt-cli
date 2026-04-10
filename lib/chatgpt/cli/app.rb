@@ -22,7 +22,7 @@ module Chatgpt
         spinner = Spinner.new
         IoUtil.print_welcome
         while message = IoUtil.read_input(input)
-          break if IoUtil.contains_quit_command(message)
+          break if IoUtil.contains_quit_command?(message)
 
           case message
           when %r{^[/\\]image}

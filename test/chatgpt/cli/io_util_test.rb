@@ -17,14 +17,14 @@ module Chatgpt
       end
 
       it 'can find quit command' do
-        assert IoUtil.contains_quit_command('\q')
-        assert IoUtil.contains_quit_command('/q')
-        assert IoUtil.contains_quit_command('quit')
-        assert IoUtil.contains_quit_command('/quit')
-        assert IoUtil.contains_quit_command('\quit')
-        assert IoUtil.contains_quit_command('exit')
-        assert IoUtil.contains_quit_command('/exit')
-        assert IoUtil.contains_quit_command('\exit')
+        assert IoUtil.contains_quit_command?('\q')
+        assert IoUtil.contains_quit_command?('/q')
+        assert IoUtil.contains_quit_command?('quit')
+        assert IoUtil.contains_quit_command?('/quit')
+        assert IoUtil.contains_quit_command?('\quit')
+        assert IoUtil.contains_quit_command?('exit')
+        assert IoUtil.contains_quit_command?('/exit')
+        assert IoUtil.contains_quit_command?('\exit')
       end
 
       it 'can get user prompt' do

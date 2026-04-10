@@ -3,6 +3,7 @@
 $LOAD_PATH.unshift File.expand_path('../lib', __dir__)
 require 'chatgpt/cli'
 require 'minitest/autorun'
+require 'minitest/mock'
 require 'vcr'
 
 VCR.configure do |config|

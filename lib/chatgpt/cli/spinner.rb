@@ -7,7 +7,7 @@ module Chatgpt
     # Spinner class
     class Spinner
       def initialize(spinner = nil)
-        @spinner = spinner || TTY::Spinner.new(":spinner",
+        @spinner = spinner || TTY::Spinner.new(':spinner',
                                                format: :dots,
                                                clear: true,
                                                success_mark: '-->',

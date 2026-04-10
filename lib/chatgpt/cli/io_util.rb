@@ -6,26 +6,29 @@ module Chatgpt
   module Cli
     # IO Utility
     class IoUtil
-      def self.contains_quit_command(input)
+      def self.contains_quit_command?(input)
         %w[exit quit /exit /quit /q \\q \\quit \\exit].include?(input)
       end
 
+      # rubocop:disable Naming/PredicateMethod
       def self.print_welcome
         puts 'Welcome to ChatGPT, start chatting!'
         true
       end
+      # rubocop:enable Naming/PredicateMethod
 
       def self.get_user_prompt(input, keyword)
         input.sub(%r{^/#{keyword}\s+}, '')
       end
 
       def self.read_input(input = Readline)
-          input ||= Readline
-          input.readline('> ', true)
-        rescue Interrupt, StandardError => e
-          return 'exit'
+        input ||= Readline
+        input.readline('> ', true)
+      rescue Interrupt, StandardError
+        'exit'
       end
 
+      # rubocop:disable Naming/PredicateMethod
       def self.print_help
         puts '---------------------------------------------------'
         puts 'Usage Help: Enter your chat message'
@@ -38,6 +41,7 @@ module Chatgpt
         puts '---------------------------------------------------'
         true
       end
+      # rubocop:enable Naming/PredicateMethod
     end
   end
 end
